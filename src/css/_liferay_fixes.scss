@@ -1,0 +1,63 @@
+body {
+    @include sans-serif-font;
+}
+
+#wrapper {
+    @include serif-font;
+
+    .h2, h2 {
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    .h3, h3 {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    section.portlet {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+
+#mainNav {
+    padding: .5rem 1rem;
+
+    @at-root {
+        .has-control-menu & {
+            margin-top: 48px;
+
+            @include media-breakpoint-up(md) {
+                margin-top: 56px;
+            }
+        }
+    }
+
+    &.fixed-top {
+        z-index: 200;
+    }
+	
+	
+}
+
+#_com_liferay_layout_content_page_editor_web_internal_portlet_ContentPageEditorPortlet_toolbar > div {
+	z-index: 300;
+}
+
+@media screen and (min-width: 1000px) {
+	.columns-2{
+		max-width: 1200px;
+		margin: auto;
+		padding-top: 10px;
+	}
+	.columns-max{
+		max-width: 1200px;
+		margin: auto;
+		padding-top: 10px;
+	}
+}
+
+section {
+	padding: 0rem 0;
+}
