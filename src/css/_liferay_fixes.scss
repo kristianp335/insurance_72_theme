@@ -56,8 +56,21 @@ body {
 		margin: auto;
 		padding-top: 10px;
 	}
+	.columns-3{
+		max-width: 1200px;
+		margin: auto;
+		padding-top: 10px;
+	}
 }
 
 section {
 	padding: 0rem 0;
+}
+
+.ddm-user-view-content .multi-step-item.active .multi-step-divider {
+	background-color: $primary !important;
+}
+
+.multi-step-item.active .multi-step-icon {
+	background-color: $primary !important;
 }

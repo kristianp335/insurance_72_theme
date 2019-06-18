@@ -39,7 +39,7 @@
 
 				<#if !is_signed_in>
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" data-redirect="${is_login_redirect_required?string}" href="${sign_in_url}" id="sign-in" rel="nofollow">${sign_in_text}</a>
+						<a class="nav-link" data-redirect="${is_login_redirect_required?string}" href="javascript:void(0)" onclick="$('#loginCardContainer').css('visibility', 'visible');" id="sign-in" rel="nofollow">${sign_in_text}</a>
 					</li>
 				</#if>
 				<#if is_signed_in>
@@ -47,6 +47,12 @@
 						<a class="nav-link" href="${sign_out_url}" id="sign-out" rel="nofollow">${sign_out_text}</a>
 					</li>
 				</#if>
+				<#assign preferences = freeMarkerPortletPreferences.getPreferences({"portletSetupPortletDecoratorId": "barebone", "destination": "/search"}) />
+				<li>						
+					<div class="justify-content-md-end mr-4 navbar-form" role="search">
+									<@liferay.search_bar default_preferences="${preferences}" />
+					</div>		
+				</li>				
 				<#if is_signed_in>
 					<li>						
 						<@liferay.user_personal_bar />			
@@ -56,3 +62,16 @@
 		</div>
 	</div>
 </nav>
+<div id="loginCardContainer" style="background: rgba(0, 0, 0, 0.5); height: 100%; width: 100%; z-index: 1500; position: fixed; top: 0; left: 0; visibility: hidden;">
+	<div style="margin-left: 90%; margin-right: 20px; margin-top: 20px; position: relative;">
+		<a class="btn btn-primary" href="javascript:void(0)" onclick="$('#loginCardContainer').css('visibility', 'hidden');" id="hide-sign-in" rel="nofollow">X</a>
+	</div>
+	<div class="b2b-login-card card" id="loginCardArea" style="background-color: #ffffff; min-width:300px; max-width: 400px; position: fixed; top: 25%;
+		left: 50%; transform: translate(-50%, 0); z-index: 2000; padding: 20px;">	
+			<#assign preferences = freeMarkerPortletPreferences.getPreferences("portletSetupPortletDecoratorId", "barebone") />
+			<@liferay_portlet["runtime"]
+				defaultPreferences=preferences
+				portletName="com_liferay_login_web_portlet_LoginPortlet"
+			/>
+	</div>
+<div>
