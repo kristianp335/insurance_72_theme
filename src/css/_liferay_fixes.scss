@@ -19,6 +19,7 @@ body {
         padding-bottom: 0;
         padding-top: 0;
     }
+	margin-bottom: 40px;
 }
 
 #mainNav {
@@ -36,9 +37,7 @@ body {
 
     &.fixed-top {
         z-index: 200;
-    }
-	
-	
+    }	
 }
 
 #_com_liferay_layout_content_page_editor_web_internal_portlet_ContentPageEditorPortlet_toolbar > div {
@@ -73,4 +72,36 @@ section {
 
 .multi-step-item.active .multi-step-icon {
 	background-color: $primary !important;
+}
+
+p.mb-5 {
+	display: none;
+}
+
+footer {
+	position: fixed;
+    bottom: 0;
+    background-color: $gray-800;
+    height: 40px;
+    width: 100%;
+}
+
+.footer-row {
+	max-width: 1250px;
+	margin: auto;
+}
+
+.footer-text {
+	color: $gray-300;
+	padding-top: 10px;
+	padding-left: 5px;
+}
+
+.footer-image {
+	width: 23px !important;
+	padding-top: 7px;
+}
+
+.footer-image-parent {
+	float: right;
 }
