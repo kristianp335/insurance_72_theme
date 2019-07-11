@@ -15,6 +15,7 @@
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto" aria-label="<@liferay.language key="site-pages" />" role="menubar">
@@ -31,10 +32,27 @@
 							nav_item_css_class = "selected"
 						/>
 					</#if>
-
-					<li ${nav_item_attr_selected} class="${nav_item_css_class} nav-item" id="layout_${nav_item.getLayoutId()}" role="presentation">
-						<a aria-labelledby="layout_${nav_item.getLayoutId()}" class="nav-link js-scroll-trigger" href="${nav_item.getURL()}" ${nav_item.getTarget()} role="menuitem"><span><@liferay_theme["layout-icon"] layout=nav_item_layout /> ${nav_item.getName()}</span></a>
-					</li>
+					<#if !nav_item.hasChildren()>
+						<li ${nav_item_attr_selected} class="${nav_item_css_class} nav-item" id="layout_${nav_item.getLayoutId()}" role="presentation">
+							<a aria-labelledby="layout_${nav_item.getLayoutId()}" class="nav-link js-scroll-trigger" href="${nav_item.getURL()}" ${nav_item.getTarget()} role="menuitem"><span><@liferay_theme["layout-icon"] layout=nav_item_layout /> ${nav_item.getName()}</span></a>
+						</li>
+					</#if>
+					
+					<#if nav_item.hasChildren()>
+						<li ${nav_item_attr_selected} class="${nav_item_css_class} nav-item dropdown" id="layout_${nav_item.getLayoutId()}" role="presentation">
+								<a aria-labelledby="layout_${nav_item.getLayoutId()}" class="nav-link js-scroll-trigger" href="${nav_item.getURL()}" ${nav_item.getTarget()} role="menuitem"><span><@liferay_theme["layout-icon"] layout=nav_item_layout /> ${nav_item.getName()}</span></a>
+								<a class="nav-link" href="#" id="navbarDropdown${nav_item.getLayoutId()}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<svg class="lexicon-icon">
+														<use xlink:href="${images_folder}/lexicon/icons.svg#caret-bottom" />
+									</svg>
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown${nav_item.getLayoutId()}">	
+									<#list nav_item.getChildren() as nav_child>
+										<a class="dropdown-item" href="${nav_child.getURL()}" ${nav_child.getTarget()}>${nav_child.getName()}</a>	
+									</#list>
+								</div<
+						</li>
+					</#if>
 				</#list>
 
 				<#if !is_signed_in>
