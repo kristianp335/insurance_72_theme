@@ -53,7 +53,7 @@
 <footer id="footer">
 	<div class="row footer-row">
 		<div class="col-sm footer-text">
-		  <h5>Liferay UK &copy;2019<h5>
+		  <h5>Liferay UK &copy;2020<h5>
 		</div>
 		<div class="col-sm">
 			<div class="component-social pb-4 footer-image-parent">

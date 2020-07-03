@@ -18,6 +18,8 @@
 
 			portlet_title_menus = portlet_toolbar.getPortletTitleMenus(portlet_display_root_portlet_id, renderRequest, renderResponse)
 		/>
+		<div>${portlet_title_menus}</div>
+		<div>${portlet_configuration_icons}</div>
 
 		<#if (portlet_configuration_icons?has_content || portlet_title_menus?has_content)>
 			<header class="portlet-topper">
